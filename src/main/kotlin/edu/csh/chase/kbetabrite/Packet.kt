@@ -10,7 +10,7 @@ data class Packet(
         val signCode: SignCodes = SignCodes.AllSigns,
         val outFile: String,
         val typeCode: SignCodes,
-        val signAddress: String = "00",
+        val signAddress: String = stringFromHex(0x00, 0x00),
         val commands: ArrayList<Command> = ArrayList<Command>()) : Writable {
 
     fun write() {
