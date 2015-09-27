@@ -14,9 +14,5 @@ public enum class CommandCodes(val code: Char) {
     WriteLargeDots('M'),
     ReadLargeDots('N'),
     WriteAlphaisionBulletin('O'),
-    SetTimeout('T');
-
-    override fun toString() = code.toString()
-
-
+    SetTimeout('T')
 }
