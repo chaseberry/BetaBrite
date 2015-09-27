@@ -11,7 +11,7 @@ data class Packet(
         val outFile: String,
         val typeCode: SignCodes,
         val signAddress: String = "00",
-        val commands: ArrayList<Command>) : Writable {
+        val commands: ArrayList<Command> = ArrayList<Command>()) : Writable {
 
     fun write() {
         write(OutputStreamWriter(FileOutputStream(java.io.File(outFile))))
@@ -41,6 +41,8 @@ data class Packet(
 
 
         writer.write(endOfTransmission)
+        writer.flush()
+        writer.close()
     }
 
 

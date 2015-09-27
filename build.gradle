@@ -35,6 +35,17 @@ sourceSets {
     test.java.srcDirs += 'src/test/kotlin'
 }
 
+jar {
+    from {
+        (configurations.runtime).collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+    manifest {
+        attributes("Main-Class": "Main" )
+    }
+}
+
 bintray {
     Properties properties = new Properties()
     properties.load(project.rootProject.file('local.properties').newDataInputStream())
