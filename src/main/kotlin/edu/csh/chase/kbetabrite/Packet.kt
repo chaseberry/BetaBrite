@@ -1,6 +1,8 @@
 package edu.csh.chase.kbetabrite
 
 import edu.csh.chase.kbetabrite.models.SignCodes
+import java.io.FileOutputStream
+import java.io.OutputStreamWriter
 import java.io.Writer
 import java.util.*
 
@@ -10,6 +12,10 @@ data class Packet(
         val typeCode: SignCodes,
         val signAddress: String = "00",
         val commands: ArrayList<Command>) : Writable {
+
+    fun write() {
+        write(OutputStreamWriter(FileOutputStream(java.io.File(outFile))))
+    }
 
     override fun write(writer: Writer) {
         if (commands.size() == 0) {
@@ -25,7 +31,8 @@ data class Packet(
             commands[0].write(writer)
         } else {
             for (command in commands) {
-                Thread.sleep(100)
+                writer.flush()
+                Thread.sleep(sleepTime)
                 command.write(writer)
                 writer.write(endOfText)
             }
