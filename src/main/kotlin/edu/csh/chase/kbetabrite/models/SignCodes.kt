@@ -1,4 +1,4 @@
-package edu.csh.chase.kbetabrite
+package edu.csh.chase.kbetabrite.models
 
 //TODO add the rest of these
 public enum class SignCodes(code: Char) {

@@ -1,4 +1,4 @@
-package edu.csh.chase.kbetabrite
+package edu.csh.chase.kbetabrite.models
 
 public enum class WriteModes(val code: String) {
     Rotate("a"),

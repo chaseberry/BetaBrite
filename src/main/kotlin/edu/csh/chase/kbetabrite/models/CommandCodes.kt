@@ -1,4 +1,4 @@
-package edu.csh.chase.kbetabrite
+package edu.csh.chase.kbetabrite.models
 
 public enum class CommandCodes(val code: Char) {
     WriteText('A'),

@@ -1,4 +1,4 @@
-package edu.csh.chase.kbetabrite
+package edu.csh.chase.kbetabrite.models
 
 //TODO change to String and support multiple char functions
 public enum class SpecialFunctions(code: Char) {
