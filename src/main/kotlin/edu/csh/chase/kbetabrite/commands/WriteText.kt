@@ -2,6 +2,7 @@ package edu.csh.chase.kbetabrite.commands
 
 import edu.csh.chase.kbetabrite.Command
 import edu.csh.chase.kbetabrite.File
+import edu.csh.chase.kbetabrite.escape
 import edu.csh.chase.kbetabrite.models.CommandCodes
 import edu.csh.chase.kbetabrite.models.DisplayPosition
 import edu.csh.chase.kbetabrite.models.WriteModes
@@ -17,10 +18,10 @@ public class WriteText(val text: String,
     override fun write(writer: Writer) {
         writer.write(commandCode.code)
         writer.write(File[fileIndex])
-        writer.write(0x1B.toString())
+        writer.write(escape)
         writer.write(displayPosition.code)
         writer.write(displayMode.code)
         writer.write(text)
     }
-    
+
 }
