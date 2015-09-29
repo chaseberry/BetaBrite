@@ -1,6 +1,8 @@
 package edu.csh.chase.kbetabrite
 
 import edu.csh.chase.kbetabrite.commands.SetMemoryConfig
+import edu.csh.chase.kbetabrite.commands.WriteString
+import edu.csh.chase.kbetabrite.commands.WriteText
 import edu.csh.chase.kbetabrite.constants.DisplayMode
 import edu.csh.chase.kbetabrite.constants.DisplayPosition
 import edu.csh.chase.kbetabrite.constants.KeyboardProtectionStatus
@@ -25,6 +27,11 @@ class Test {
                         mode = DisplayMode.Clock
                 ), KeyboardProtectionStatus.Locked)
         ))
+        p.commands.add(WriteString(8, "Hello"))
+        p.commands.add(WriteText(9, Text(
+                text = "Hello",
+                displayPosition = DisplayPosition.Fill,
+                mode = DisplayMode.Clock)))
         val writer = StringWriter()
         p.write(writer)
         //p.write()

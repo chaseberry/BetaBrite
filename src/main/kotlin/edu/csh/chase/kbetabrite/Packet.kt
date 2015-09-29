@@ -25,12 +25,13 @@ data class Packet(
         writer.write(startOfHeader)
         writer.write(typeCode.code)
         writer.write(signAddress)
-        writer.write(startOfText)
 
         if (commands.size() == 1) {
+            writer.write(startOfText)
             commands[0].write(writer)
         } else {
             for (command in commands) {
+                writer.write(startOfText)
                 writer.flush()
                 Thread.sleep(sleepTime)
                 command.write(writer)
