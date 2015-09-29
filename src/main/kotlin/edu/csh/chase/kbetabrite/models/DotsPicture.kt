@@ -7,10 +7,20 @@ import edu.csh.chase.kbetabrite.sleepTime
 import java.io.Writer
 import java.util.*
 
-data class DotsPicture(val width: Int,
-                       val height: Int,
-                       val colorCode: ColorCode,
+data class DotsPicture(val colorCode: ColorCode,
                        val dots: ArrayList<ArrayList<Int>>) : Writable {
+
+    val height: Int
+        get() {
+            //Test sizing
+            return dots.size()
+        }
+
+    val width: Int
+        get() {
+            //Test sizing
+            return dots[0].size()
+        }
 
     override fun write(writer: Writer) {
         writer.write(height)//TODO make hex
