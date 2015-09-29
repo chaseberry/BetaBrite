@@ -1,6 +1,5 @@
 package edu.csh.chase.kbetabrite
 
-import edu.csh.chase.kbetabrite.Packet
 import edu.csh.chase.kbetabrite.commands.WriteText
 import edu.csh.chase.kbetabrite.models.DisplayPosition
 import edu.csh.chase.kbetabrite.models.SignCode
