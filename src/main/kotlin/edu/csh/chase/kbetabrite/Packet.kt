@@ -1,15 +1,15 @@
 package edu.csh.chase.kbetabrite
 
-import edu.csh.chase.kbetabrite.models.SignCodes
+import edu.csh.chase.kbetabrite.models.SignCode
 import java.io.FileOutputStream
 import java.io.OutputStreamWriter
 import java.io.Writer
 import java.util.*
 
 data class Packet(
-        val signCode: SignCodes = SignCodes.AllSigns,
+        val signCode: SignCode = SignCode.AllSigns,
         val outFile: String,
-        val typeCode: SignCodes,
+        val typeCode: SignCode,
         val signAddress: String = "00",
         val commands: ArrayList<Command> = ArrayList<Command>()) : Writable {
 

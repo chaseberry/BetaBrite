@@ -2,7 +2,7 @@ package edu.csh.chase.kbetabrite.models
 
 import edu.csh.chase.kbetabrite.Codable
 
-public enum class WriteModes(override val code: String) : Codable {
+public enum class DisplayMode(override val code: String) : Codable {
     Rotate("a"),
     Hold("b"),
     Flash("c"),

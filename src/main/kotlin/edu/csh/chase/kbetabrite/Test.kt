@@ -3,8 +3,9 @@ package edu.csh.chase.kbetabrite
 import edu.csh.chase.kbetabrite.Packet
 import edu.csh.chase.kbetabrite.commands.WriteText
 import edu.csh.chase.kbetabrite.models.DisplayPosition
-import edu.csh.chase.kbetabrite.models.SignCodes
-import edu.csh.chase.kbetabrite.models.WriteModes
+import edu.csh.chase.kbetabrite.models.SignCode
+import edu.csh.chase.kbetabrite.models.DisplayMode
+import edu.csh.chase.kbetabrite.models.Text
 import java.io.StringWriter
 import java.lang
 
@@ -12,12 +13,10 @@ class Test {
 
     public fun main(args: Array<String>) {
         val p = Packet(outFile = "/dev/ttyUSB0",
-                typeCode = SignCodes.AllSigns
+                typeCode = SignCode.AllSigns
         )
         p.commands.add(WriteText(
-                text = "Hello World!",
-                displayPosition = DisplayPosition.Fill,
-                displayMode = WriteModes.Explode,
+                texts = *arrayOf(Text("Hello World", DisplayMode.StarBurst, DisplayPosition.Fill)),
                 fileIndex = 9
         ))
         val writer = StringWriter()

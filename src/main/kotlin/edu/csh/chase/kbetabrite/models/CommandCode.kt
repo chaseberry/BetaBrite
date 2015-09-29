@@ -2,7 +2,7 @@ package edu.csh.chase.kbetabrite.models
 
 import edu.csh.chase.kbetabrite.Codable
 
-public enum class CommandCodes(override val code: String) : Codable {
+public enum class CommandCode(override val code: String) : Codable {
     WriteText("A"),
     ReadText("B"),
     WriteSpecialFunction("E"),
