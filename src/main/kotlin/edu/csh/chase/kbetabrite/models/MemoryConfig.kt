@@ -1,9 +1,9 @@
 package edu.csh.chase.kbetabrite.models
 
+import edu.csh.chase.kbetabrite.File
 import edu.csh.chase.kbetabrite.Writable
 import edu.csh.chase.kbetabrite.constants.FileType
 import edu.csh.chase.kbetabrite.constants.KeyboardProtectionStatus
-import edu.csh.chase.kbetabrite.models.DotsPicture
 import java.io.Writer
 import java.lang
 
@@ -14,13 +14,17 @@ data class MemoryConfig(val fileIndex: Int,
                         val qqqq: String) : Writable {
 
     override fun write(writer: Writer) {
-
+        writer.write(File[fileIndex])
+        writer.write(fileType.code)
+        writer.write(keyboardProtectionStatus.code)
+        writer.write(size)
+        writer.write(qqqq)
     }
 }
 
 fun stringSizeToHex(string: String): String {
     if (string.length() >= 125) {
-        println("$string is greater than 125. Truncating")
+        throw RuntimeException("$string is longer than 125 chars")
     }
     var hex = Integer.toHexString(string.length())
     while (hex.length() < 4) {
