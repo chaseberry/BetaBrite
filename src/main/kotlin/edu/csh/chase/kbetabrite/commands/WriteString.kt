@@ -2,7 +2,7 @@ package edu.csh.chase.kbetabrite.commands
 
 import edu.csh.chase.kbetabrite.Command
 import edu.csh.chase.kbetabrite.File
-import edu.csh.chase.kbetabrite.models.CommandCode
+import edu.csh.chase.kbetabrite.constants.CommandCode
 import java.io.Writer
 
 class WriteString(val fileIndex: Int,

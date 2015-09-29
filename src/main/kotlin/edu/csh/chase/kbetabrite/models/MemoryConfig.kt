@@ -1,7 +1,9 @@
 package edu.csh.chase.kbetabrite.models
 
 import edu.csh.chase.kbetabrite.Writable
-import edu.csh.chase.kbetabrite.commands.DotsPicture
+import edu.csh.chase.kbetabrite.constants.FileType
+import edu.csh.chase.kbetabrite.constants.KeyboardProtectionStatus
+import edu.csh.chase.kbetabrite.models.DotsPicture
 import java.io.Writer
 import java.lang
 

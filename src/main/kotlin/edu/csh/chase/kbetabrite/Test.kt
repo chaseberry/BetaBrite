@@ -1,9 +1,9 @@
 package edu.csh.chase.kbetabrite
 
 import edu.csh.chase.kbetabrite.commands.WriteText
-import edu.csh.chase.kbetabrite.models.DisplayPosition
-import edu.csh.chase.kbetabrite.models.SignCode
-import edu.csh.chase.kbetabrite.models.DisplayMode
+import edu.csh.chase.kbetabrite.constants.DisplayPosition
+import edu.csh.chase.kbetabrite.constants.SignCode
+import edu.csh.chase.kbetabrite.constants.DisplayMode
 import edu.csh.chase.kbetabrite.models.Text
 import java.io.StringWriter
 import java.lang

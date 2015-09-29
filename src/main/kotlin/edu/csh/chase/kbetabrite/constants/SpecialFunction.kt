@@ -1,4 +1,4 @@
-package edu.csh.chase.kbetabrite.models
+package edu.csh.chase.kbetabrite.constants
 
 import edu.csh.chase.kbetabrite.Codable
 

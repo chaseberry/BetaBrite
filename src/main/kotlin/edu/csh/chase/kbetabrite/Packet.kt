@@ -1,6 +1,6 @@
 package edu.csh.chase.kbetabrite
 
-import edu.csh.chase.kbetabrite.models.SignCode
+import edu.csh.chase.kbetabrite.constants.SignCode
 import java.io.FileOutputStream
 import java.io.OutputStreamWriter
 import java.io.Writer

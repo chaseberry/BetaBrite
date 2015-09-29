@@ -1,8 +1,8 @@
-package edu.csh.chase.kbetabrite.commands
+package edu.csh.chase.kbetabrite.models
 
 import edu.csh.chase.kbetabrite.Writable
 import edu.csh.chase.kbetabrite.carrigeReturn
-import edu.csh.chase.kbetabrite.models.ColorCode
+import edu.csh.chase.kbetabrite.constants.ColorCode
 import edu.csh.chase.kbetabrite.sleepTime
 import java.io.Writer
 import java.util.*
