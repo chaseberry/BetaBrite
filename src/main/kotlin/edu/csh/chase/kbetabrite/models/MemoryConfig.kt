@@ -27,11 +27,7 @@ fun stringSizeToHex(string: String): String {
         //TODO Don't throw an exception
         throw RuntimeException("$string is longer than 125 chars")
     }
-    var hex = Integer.toHexString(string.length())
-    while (hex.length() < 4) {
-        hex = "0" + hex
-    }
-    return hex
+    return lang.String.format("%04x", string.length())
 }
 
 fun stringMemConfig(fileIndex: Int, string: String, keyboardProtectionStatus: KeyboardProtectionStatus): MemoryConfig {
@@ -49,7 +45,7 @@ fun textMemConfig(fileIndex: Int, text: Text, keyboardProtectionStatus: Keyboard
             fileIndex = fileIndex,
             fileType = FileType.Text,
             keyboardProtectionStatus = keyboardProtectionStatus,
-            size = stringSizeToHex(text.text),
+            size = lang.String.format("%04x", 1 + text.text.length() + (2 * text.mode.name().length())),
             qqqq = text.startTime + text.endTime
     )
 }

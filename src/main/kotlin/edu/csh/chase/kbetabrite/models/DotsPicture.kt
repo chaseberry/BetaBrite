@@ -23,8 +23,8 @@ data class DotsPicture(val colorCode: ColorCode,
         }
 
     override fun write(writer: Writer) {
-        writer.write(height)//TODO make hex
-        writer.write(width)//TODO make hex
+        writer.write(height)
+        writer.write(width)
         writer.flush()
         Thread.sleep(sleepTime)
         for (row in dots) {
