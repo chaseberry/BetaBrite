@@ -5,21 +5,21 @@ import edu.csh.chase.kbetabrite.carrigeReturn
 import edu.csh.chase.kbetabrite.constants.ColorCode
 import edu.csh.chase.kbetabrite.sleepTime
 import java.io.Writer
-import java.util.*
+import java.lang
 
 data class DotsPicture(val colorCode: ColorCode,
-                       val dots: ArrayList<ArrayList<Int>>) : Writable {
+                       val dots: Array<Array<Int>>) : Writable {
 
-    val height: Int
+    val height: String
         get() {
             //Test sizing
-            return dots.size()
+            return lang.String.format("%02x", dots.size()).toUpperCase()
         }
 
-    val width: Int
+    val width: String
         get() {
             //Test sizing
-            return dots[0].size()
+            return lang.String.format("%02x", dots[0].size()).toUpperCase()
         }
 
     override fun write(writer: Writer) {

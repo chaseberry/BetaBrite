@@ -1,10 +1,9 @@
 package edu.csh.chase.kbetabrite
 
-import edu.csh.chase.kbetabrite.commands.WriteText
-import edu.csh.chase.kbetabrite.constants.DisplayMode
-import edu.csh.chase.kbetabrite.constants.DisplayPosition
+import edu.csh.chase.kbetabrite.commands.WriteSmallDots
+import edu.csh.chase.kbetabrite.constants.ColorCode
 import edu.csh.chase.kbetabrite.constants.SignCode
-import edu.csh.chase.kbetabrite.models.Text
+import edu.csh.chase.kbetabrite.models.DotsPicture
 import java.io.StringWriter
 import java.lang
 
@@ -14,13 +13,13 @@ class Test {
         val p = Packet(outFile = "/dev/ttyUSB0",
                 typeCode = SignCode.AllSigns
         )
-        p.commands.add(WriteText(
-                texts = *arrayOf(Text("Hello World", DisplayMode.StarBurst, DisplayPosition.Fill)),
+        p.commands.add(WriteSmallDots(
+                dotsPicture = DotsPicture(ColorCode.EightColor, Array(12) { Array(12) { 0 } }),
                 fileIndex = 9
         ))
         val writer = StringWriter()
         p.write(writer)
-        p.write()
+        //p.write()
         var first = false
         writer.toString().forEach { char ->
             if (first) {
