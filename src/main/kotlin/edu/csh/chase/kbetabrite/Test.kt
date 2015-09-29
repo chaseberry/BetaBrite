@@ -1,14 +1,17 @@
+package edu.csh.chase.kbetabrite
+
 import edu.csh.chase.kbetabrite.Packet
 import edu.csh.chase.kbetabrite.commands.WriteText
 import edu.csh.chase.kbetabrite.models.DisplayPosition
 import edu.csh.chase.kbetabrite.models.SignCodes
 import edu.csh.chase.kbetabrite.models.WriteModes
 import java.io.StringWriter
+import java.lang
 
 class Test {
 
     public fun main(args: Array<String>) {
-        val p = Packet(outFile = "\\dev\\ttyUSB0",
+        val p = Packet(outFile = "/dev/ttyUSB0",
                 typeCode = SignCodes.AllSigns
         )
         p.commands.add(WriteText(
@@ -25,7 +28,7 @@ class Test {
             if (first) {
                 print(":")
             }
-            print(java.lang.String.format("0x%02x", char.toInt()))
+            print(lang.String.format("0x%02x", char.toInt()))
             first = true
         }
     }
