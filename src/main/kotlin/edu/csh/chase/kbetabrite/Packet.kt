@@ -7,8 +7,8 @@ import java.io.Writer
 import java.util.*
 
 data class Packet(
-        val signCode: SignCode = SignCode.AllSigns,
         val outFile: String,
+        val signCode: SignCode = SignCode.AllSigns,
         val signAddress: String = "00",
         val commands: ArrayList<Command> = ArrayList<Command>()) : Writable {
 
