@@ -2,6 +2,8 @@ package edu.csh.chase.kbetabrite.models
 
 import edu.csh.chase.kbetabrite.File
 import edu.csh.chase.kbetabrite.Writable
+import edu.csh.chase.kbetabrite.commands.WriteString
+import edu.csh.chase.kbetabrite.commands.WriteText
 import edu.csh.chase.kbetabrite.constants.FileType
 import edu.csh.chase.kbetabrite.constants.KeyboardProtectionStatus
 import java.io.Writer
@@ -30,23 +32,24 @@ fun stringSizeToHex(string: String): String {
     return lang.String.format("%04x", string.length())
 }
 
-fun stringMemConfig(fileIndex: Int, string: String, keyboardProtectionStatus: KeyboardProtectionStatus): MemoryConfig {
+fun stringMemConfig(writeString: WriteString, keyboardProtectionStatus: KeyboardProtectionStatus): MemoryConfig {
     return MemoryConfig(
-            fileIndex = fileIndex,
+            fileIndex = writeString.fileIndex,
             fileType = FileType.String,
             keyboardProtectionStatus = keyboardProtectionStatus,
-            size = stringSizeToHex(string),
+            size = stringSizeToHex(writeString.text),
             qqqq = "0000"
     )
 }
 
-fun textMemConfig(fileIndex: Int, text: Text, keyboardProtectionStatus: KeyboardProtectionStatus): MemoryConfig {
+fun textMemConfig(writeText: WriteText, keyboardProtectionStatus: KeyboardProtectionStatus): MemoryConfig {
+    val text = writeText.texts
     return MemoryConfig(
-            fileIndex = fileIndex,
+            fileIndex = writeText.fileIndex,
             fileType = FileType.Text,
             keyboardProtectionStatus = keyboardProtectionStatus,
-            size = lang.String.format("%04x", 1 + text.text.length() + (2 * text.mode.name().length())),
-            qqqq = text.startTime + text.endTime
+            size = lang.String.format("%04x", 1 + text.sumBy { it.text.length() } + (text.sumBy { it.mode.name().length() })),
+            qqqq = writeText.startTime + writeText.endTime
     )
 }
 

@@ -8,9 +8,7 @@ import java.io.Writer
 
 data class Text(val text: String,
                 val mode: DisplayMode,
-                val displayPosition: DisplayPosition,
-                val startTime: String = "FF",
-                val endTime: String = "FE") : Writable {
+                val displayPosition: DisplayPosition) : Writable {
 
     override fun write(writer: Writer) {
         writer.write(escape)

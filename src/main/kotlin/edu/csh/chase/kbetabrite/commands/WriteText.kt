@@ -7,6 +7,8 @@ import edu.csh.chase.kbetabrite.models.Text
 import java.io.Writer
 
 public class WriteText(val fileIndex: Int,
+                       val startTime: String = "FF",
+                       val endTime: String = "FE",
                        vararg val texts: Text) : Command(CommandCode.WriteText) {
 
     override fun write(writer: Writer) {
