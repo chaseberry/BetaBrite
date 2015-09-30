@@ -11,7 +11,11 @@ class WriteString(val fileIndex: Int,
     override fun write(writer: Writer) {
         writer.write(commandCode.code)
         writer.write(File[fileIndex])
-        writer.write(text)
+        if (text.length() > 120) {
+            writer.write(text.substring(0, 120))
+        } else {
+            writer.write(text)
+        }
     }
 
 }

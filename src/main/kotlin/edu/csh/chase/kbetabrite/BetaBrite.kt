@@ -1,12 +1,9 @@
 package edu.csh.chase.kbetabrite
 
-public class BetaBrite {
-}
+import java.util.*
 
-fun stringFromHex(vararg hexes: Int): String {
-    val builder = StringBuilder()
-    hexes.forEach {
-        builder.append(it.toChar())
-    }
-    return builder.toString()
+fun commands(vararg commands: Command): ArrayList<Command> {
+    val list = ArrayList<Command>()
+    list.addAll(commands)
+    return list
 }

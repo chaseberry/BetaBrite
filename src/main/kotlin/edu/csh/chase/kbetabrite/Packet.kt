@@ -9,7 +9,6 @@ import java.util.*
 data class Packet(
         val signCode: SignCode = SignCode.AllSigns,
         val outFile: String,
-        val typeCode: SignCode,
         val signAddress: String = "00",
         val commands: ArrayList<Command> = ArrayList<Command>()) : Writable {
 
@@ -23,7 +22,7 @@ data class Packet(
         }
         writer.write(startOfPacket)
         writer.write(startOfHeader)
-        writer.write(typeCode.code)
+        writer.write(signCode.code)
         writer.write(signAddress)
 
         if (commands.size() == 1) {
@@ -37,9 +36,7 @@ data class Packet(
                 command.write(writer)
                 writer.write(endOfText)
             }
-
         }
-
 
         writer.write(endOfTransmission)
         writer.flush()

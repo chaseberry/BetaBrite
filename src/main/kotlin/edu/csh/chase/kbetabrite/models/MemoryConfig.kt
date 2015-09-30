@@ -25,9 +25,8 @@ data class MemoryConfig(val fileIndex: Int,
 }
 
 fun stringSizeToHex(string: String): String {
-    if (string.length() >= 125) {
-        //TODO Don't throw an exception
-        throw RuntimeException("$string is longer than 125 chars")
+    if (string.length() > 120) {
+        return lang.String.format("%04x", 120)
     }
     return lang.String.format("%04x", string.length())
 }
