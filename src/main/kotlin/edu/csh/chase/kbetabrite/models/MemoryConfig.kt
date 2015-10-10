@@ -7,7 +7,6 @@ import edu.csh.chase.kbetabrite.commands.WriteText
 import edu.csh.chase.kbetabrite.constants.FileType
 import edu.csh.chase.kbetabrite.constants.KeyboardProtectionStatus
 import java.io.Writer
-import java.lang
 
 data class MemoryConfig(val fileIndex: Int,
                         val fileType: FileType,
@@ -26,9 +25,9 @@ data class MemoryConfig(val fileIndex: Int,
 
 fun stringSizeToHex(string: String): String {
     if (string.length() > 120) {
-        return lang.String.format("%04x", 120)
+        return java.lang.String.format("%04x", 120)
     }
-    return lang.String.format("%04x", string.length())
+    return java.lang.String.format("%04x", string.length())
 }
 
 fun stringMemConfig(writeString: WriteString, keyboardProtectionStatus: KeyboardProtectionStatus): MemoryConfig {
@@ -47,7 +46,7 @@ fun textMemConfig(writeText: WriteText, keyboardProtectionStatus: KeyboardProtec
             fileIndex = writeText.fileIndex,
             fileType = FileType.Text,
             keyboardProtectionStatus = keyboardProtectionStatus,
-            size = lang.String.format("%04x", 1 + text.sumBy { it.text.length() } + (text.sumBy { it.mode.name().length() })),
+            size = java.lang.String.format("%04x", 1 + text.sumBy { it.text.length() } + (text.sumBy { it.mode.name().length() })),
             qqqq = writeText.startTime + writeText.endTime
     )
 }
@@ -57,7 +56,7 @@ fun dotPictureMemConfig(fileIndex: Int, dotsPicture: DotsPicture, keyboardProtec
             fileIndex = fileIndex,
             fileType = FileType.DotsImage,
             keyboardProtectionStatus = keyboardProtectionStatus,
-            size = lang.String.format("%02x", dotsPicture.height) + lang.String.format("%02x", dotsPicture.width),
+            size = java.lang.String.format("%02x", dotsPicture.height) + java.lang.String.format("%02x", dotsPicture.width),
             qqqq = dotsPicture.colorCode.code
     )
 }

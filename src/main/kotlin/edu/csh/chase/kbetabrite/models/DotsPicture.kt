@@ -5,7 +5,6 @@ import edu.csh.chase.kbetabrite.carrigeReturn
 import edu.csh.chase.kbetabrite.constants.ColorCode
 import edu.csh.chase.kbetabrite.sleepTime
 import java.io.Writer
-import java.lang
 
 data class DotsPicture(val colorCode: ColorCode,
                        val dots: Array<Array<Int>>) : Writable {
@@ -13,13 +12,13 @@ data class DotsPicture(val colorCode: ColorCode,
     val height: String
         get() {
             //Test sizing
-            return lang.String.format("%02x", dots.size()).toUpperCase()
+            return java.lang.String.format("%02x", dots.size()).toUpperCase()
         }
 
     val width: String
         get() {
             //Test sizing
-            return lang.String.format("%02x", dots[0].size()).toUpperCase()
+            return java.lang.String.format("%02x", dots[0].size()).toUpperCase()
         }
 
     override fun write(writer: Writer) {

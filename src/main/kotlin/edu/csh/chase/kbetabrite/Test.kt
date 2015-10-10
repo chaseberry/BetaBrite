@@ -1,18 +1,24 @@
 package edu.csh.chase.kbetabrite
 
+import edu.csh.chase.kbetabrite.commands.WriteText
+import edu.csh.chase.kbetabrite.constants.DisplayPosition
+import edu.csh.chase.kbetabrite.constants.displayModeFromString
+import edu.csh.chase.kbetabrite.models.Text
 import java.util.*
 
 class Test {
 
+    val scanner = Scanner(System.`in`)
+
     public fun main(args: Array<String>) {
-        val scanner = Scanner(System.`in`)
         val packet = Packet(outFile = "/dev/ttyUSB0")
 
         while (true) {
             printMenu()
             val i = scanner.nextLine()
             when (i[0]) {
-                'p' -> packet.commands.clear()
+                'c' -> packet.commands.clear()
+                't' -> addText(packet)
                 'q' -> System.exit(0)
             }
         }
@@ -26,5 +32,18 @@ class Test {
         println("* Picture: p      *")
         println("* Quit: q         *")
         println("*******************")
+    }
+
+    private fun addText(packet: Packet) {
+        println("Text")
+        val text = scanner.nextLine()
+        println("Mode")
+        val mode = scanner.nextLine()
+        println("File")
+        val file = scanner.nextInt()
+        packet.commands.add(WriteText(fileIndex = file,
+                texts = Text(text = text,
+                        mode = displayModeFromString(mode),
+                        displayPosition = DisplayPosition.Fill)))
     }
 }

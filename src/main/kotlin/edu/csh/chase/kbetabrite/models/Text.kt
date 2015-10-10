@@ -27,7 +27,7 @@ data class Text(text: String,
         return parseStringInclude(parsePictureInclude(text))
     }
 
-    public fun parseStringInclude(text: String): String {
+    public fun parseStringInclude(  text: String): String {
         var newText = text
         val stringPattern = Regex("<s:(?<id>\\d+)>")
         val stringMatch = stringPattern.matchAll(text)
