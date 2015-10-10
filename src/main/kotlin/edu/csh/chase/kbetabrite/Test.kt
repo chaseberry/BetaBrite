@@ -15,11 +15,13 @@ class Test {
 
     val scanner = Scanner(System.`in`)
 
+    var menu = true
+
     public fun main(args: Array<String>) {
         val packet = Packet(outFile = "/dev/ttyUSB0")
 
         while (true) {
-            printMenu()
+            if (menu) printMenu()
             val i = scanner.nextLine()
             if (i.length() == 0) {
                 continue
@@ -31,6 +33,7 @@ class Test {
                 'e' -> packet.write()
                 'r' -> printPacket(packet)
                 'm' -> setMemory(packet)
+                't' -> menu = !menu
                 'q' -> System.exit(0)
             }
         }
