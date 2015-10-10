@@ -46,7 +46,7 @@ fun textMemConfig(writeText: WriteText, keyboardProtectionStatus: KeyboardProtec
             fileIndex = writeText.fileIndex,
             fileType = FileType.Text,
             keyboardProtectionStatus = keyboardProtectionStatus,
-            size = java.lang.String.format("%04x", 1 + text.sumBy { it.text.length() } + (text.sumBy { it.mode.name().length() })),
+            size = java.lang.String.format("%04x", 1 + text.sumBy { it.text.length() } + 2 * (text.sumBy { it.mode.name().length() })),
             qqqq = writeText.startTime + writeText.endTime
     )
 }
