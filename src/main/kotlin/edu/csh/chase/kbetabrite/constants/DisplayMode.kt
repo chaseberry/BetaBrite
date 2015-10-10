@@ -38,6 +38,13 @@ fun displayModeFromString(mode: String): DisplayMode {
         "newflash" -> DisplayMode.NewFlash
         "trumpet" -> DisplayMode.Trumpet
         "cyclecolors" -> DisplayMode.CycleColors
+        "thankyou" -> DisplayMode.ThankYou
+        "nosmoking" -> DisplayMode.NoSmoking
+        "dontdrinkanddrive" -> DisplayMode.DontDrinkAndDrive
+        "fish" -> DisplayMode.Fish
+        "fireworks" -> DisplayMode.FireWorks
+        "balloon" -> DisplayMode.Balloon
+        "cherrybomb" -> DisplayMode.CherryBomb
         else -> DisplayMode.Rotate
     }
 }
@@ -75,5 +82,12 @@ public enum class DisplayMode(override val code: String) : Codable {
     SlotMachine("n9"),
     NewFlash("nA"),
     Trumpet("nB"),
-    CycleColors("nC")
+    CycleColors("nC"),
+    ThankYou("nS"),
+    NoSmoking("nU"),
+    DontDrinkAndDrive("nV"),
+    Fish("nW"),
+    FireWorks("nX"),
+    Balloon("nY"),
+    CherryBomb("nZ")
 }
