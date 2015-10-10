@@ -6,9 +6,7 @@ import edu.csh.chase.kbetabrite.constants.DisplayPosition
 import java.io.Writer
 import kotlin.text.Regex
 
-data class Text(text: String,
-                val mode: DisplayMode,
-                val displayPosition: DisplayPosition) : Writable {
+class Text(text: String, val mode: DisplayMode, val displayPosition: DisplayPosition) : Writable {
 
     val text: String
 
@@ -27,7 +25,7 @@ data class Text(text: String,
         return parseStringInclude(parsePictureInclude(text))
     }
 
-    public fun parseStringInclude(  text: String): String {
+    public fun parseStringInclude(text: String): String {
         var newText = text
         val stringPattern = Regex("<s:(?<id>\\d+)>")
         val stringMatch = stringPattern.matchAll(text)

@@ -2,7 +2,7 @@ package edu.csh.chase.kbetabrite
 
 object File {
 
-    fun get(index: Int): String = when (index) {
+    operator fun get(index: Int): String = when (index) {
         0 -> 0x30.toChar().toString()
         1 -> 0x20.toChar().toString()
         2 -> 0x21.toChar().toString()
