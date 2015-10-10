@@ -44,8 +44,6 @@ fun textMemConfig(writeText: WriteText, keyboardProtectionStatus: KeyboardProtec
     val text = writeText.texts
     val size = 20 + text.sumBy { it.text.length() }
     val mem = java.lang.String.format("%04x", size).toUpperCase()
-    println("Mem size: $size")
-    println("Mem hex: $mem")
     return MemoryConfig(
             fileIndex = writeText.fileIndex,
             fileType = FileType.Text,

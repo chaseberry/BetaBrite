@@ -32,10 +32,10 @@ data class Packet(
             for (command in commands) {
                 println("Writing $command")
                 writer.write(startOfText)
-                writer.flush()
-                Thread.sleep(sleepTime)
                 command.write(writer)
                 writer.write(endOfText)
+                writer.flush()
+                Thread.sleep(sleepTime)
             }
         }
 

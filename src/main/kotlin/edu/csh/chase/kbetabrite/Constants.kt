@@ -9,6 +9,6 @@ val stringInclude = 0x10.toChar().toString()
 val pictureInclude = 0x14.toChar().toString()
 val escape = 0x1B.toChar().toString()
 val carrigeReturn = 0x0D.toChar().toString()
-val sleepTime = 100L
+val sleepTime = 145L
 
 val startOfPacket = nullChar + nullChar + nullChar + nullChar + nullChar + nullChar + nullChar + nullChar
