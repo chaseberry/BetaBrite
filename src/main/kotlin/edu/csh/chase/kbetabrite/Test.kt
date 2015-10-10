@@ -8,6 +8,7 @@ import edu.csh.chase.kbetabrite.constants.DisplayPosition
 import edu.csh.chase.kbetabrite.constants.KeyboardProtectionStatus
 import edu.csh.chase.kbetabrite.constants.displayModeFromString
 import edu.csh.chase.kbetabrite.models.*
+import java.io.StringWriter
 import java.util.*
 
 class Test {
@@ -28,9 +29,18 @@ class Test {
                 't' -> addText(packet)
                 's' -> addString(packet)
                 'e' -> packet.write()
+                'r' -> printPacket(packet)
                 'm' -> setMemory(packet)
                 'q' -> System.exit(0)
             }
+        }
+    }
+
+    private fun printPacket(packet: Packet) {
+        val buf = StringWriter()
+        packet.write(buf)
+        buf.toString().forEach {
+            print("${java.lang.String.format("%02x", it)}:")
         }
     }
 
@@ -41,6 +51,7 @@ class Test {
         println("* String: s       *")
         println("* Picture: p      *")
         println("* Mem Config: m   *")
+        println("* Print: r        *")
         println("* Execute: e      *")
         println("* Quit: q         *")
         println("*******************")
@@ -71,7 +82,7 @@ class Test {
     }
 
     private fun setMemory(packet: Packet) {
-        val mems = Array<MemoryConfig>(packet.commands.size()) {
+        val mems = Array(packet.commands.size()) {
             when (packet.commands[it]) {
                 is WriteText -> {
                     textMemConfig(packet.commands[it] as WriteText, KeyboardProtectionStatus.Locked)
