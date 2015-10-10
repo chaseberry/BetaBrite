@@ -1,10 +1,13 @@
 package edu.csh.chase.kbetabrite
 
+import edu.csh.chase.kbetabrite.commands.SetMemoryConfig
 import edu.csh.chase.kbetabrite.commands.WriteString
 import edu.csh.chase.kbetabrite.commands.WriteText
+import edu.csh.chase.kbetabrite.constants.ColorCode
 import edu.csh.chase.kbetabrite.constants.DisplayPosition
+import edu.csh.chase.kbetabrite.constants.KeyboardProtectionStatus
 import edu.csh.chase.kbetabrite.constants.displayModeFromString
-import edu.csh.chase.kbetabrite.models.Text
+import edu.csh.chase.kbetabrite.models.*
 import java.util.*
 
 class Test {
@@ -17,11 +20,15 @@ class Test {
         while (true) {
             printMenu()
             val i = scanner.nextLine()
+            if (i.length() == 0) {
+                continue
+            }
             when (i[0]) {
                 'c' -> packet.commands.clear()
                 't' -> addText(packet)
                 's' -> addString(packet)
                 'e' -> packet.write()
+                'm' -> setMemory(packet)
                 'q' -> System.exit(0)
             }
         }
@@ -33,6 +40,7 @@ class Test {
         println("* Text: t         *")
         println("* String: s       *")
         println("* Picture: p      *")
+        println("* Mem Config: m   *")
         println("* Execute: e      *")
         println("* Quit: q         *")
         println("*******************")
@@ -60,6 +68,24 @@ class Test {
                 text = str,
                 fileIndex = file
         ))
+    }
+
+    private fun setMemory(packet: Packet) {
+        val mems = Array<MemoryConfig>(packet.commands.size()) {
+            when (packet.commands[it]) {
+                is WriteText -> {
+                    textMemConfig(packet.commands[it] as WriteText, KeyboardProtectionStatus.Locked)
+                }
+                is WriteString -> {
+                    stringMemConfig(packet.commands[it] as WriteString, KeyboardProtectionStatus.Locked)
+                }
+                else -> {
+                    dotPictureMemConfig(0, DotsPicture(ColorCode.EightColor, Array(0) { Array(0) { 0 } }), KeyboardProtectionStatus.Locked)
+                }
+            }
+        }
+
+        packet.commands.add(0, SetMemoryConfig(*mems))
     }
 
 }
