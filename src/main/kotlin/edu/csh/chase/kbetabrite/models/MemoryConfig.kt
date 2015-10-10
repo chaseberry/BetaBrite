@@ -48,7 +48,7 @@ fun textMemConfig(writeText: WriteText, keyboardProtectionStatus: KeyboardProtec
             fileIndex = writeText.fileIndex,
             fileType = FileType.Text,
             keyboardProtectionStatus = keyboardProtectionStatus,
-            size = java.lang.String.format("%04x", size),
+            size = java.lang.String.format("%04x", size).toUpperCase(),
             qqqq = writeText.startTime + writeText.endTime
     )
 }
