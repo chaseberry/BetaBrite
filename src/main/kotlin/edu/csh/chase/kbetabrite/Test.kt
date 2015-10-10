@@ -33,7 +33,7 @@ class Test {
                 'e' -> packet.write()
                 'r' -> printPacket(packet)
                 'm' -> setMemory(packet)
-                't' -> menu = !menu
+                'o' -> menu = !menu
                 'q' -> System.exit(0)
             }
         }
@@ -45,6 +45,7 @@ class Test {
         buf.toString().forEach {
             print("${java.lang.String.format("%02x", it.toInt())}:")
         }
+        println()
     }
 
     private fun printMenu() {
