@@ -42,7 +42,7 @@ fun stringMemConfig(writeString: WriteString, keyboardProtectionStatus: Keyboard
 
 fun textMemConfig(writeText: WriteText, keyboardProtectionStatus: KeyboardProtectionStatus): MemoryConfig {
     val text = writeText.texts
-    val size = 15 + text.sumBy { it.text.length() }
+    val size = 20 + text.sumBy { it.text.length() }
     println("Mem size: $size")
     return MemoryConfig(
             fileIndex = writeText.fileIndex,
