@@ -43,12 +43,14 @@ fun stringMemConfig(writeString: WriteString, keyboardProtectionStatus: Keyboard
 fun textMemConfig(writeText: WriteText, keyboardProtectionStatus: KeyboardProtectionStatus): MemoryConfig {
     val text = writeText.texts
     val size = 20 + text.sumBy { it.text.length() }
+    val mem = java.lang.String.format("%04x", size).toUpperCase()
     println("Mem size: $size")
+    println("Mem hex: $mem")
     return MemoryConfig(
             fileIndex = writeText.fileIndex,
             fileType = FileType.Text,
             keyboardProtectionStatus = keyboardProtectionStatus,
-            size = java.lang.String.format("%04x", size).toUpperCase(),
+            size = mem,
             qqqq = writeText.startTime + writeText.endTime
     )
 }

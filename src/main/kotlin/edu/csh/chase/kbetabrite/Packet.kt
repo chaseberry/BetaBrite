@@ -30,6 +30,7 @@ data class Packet(
             commands[0].write(writer)
         } else {
             for (command in commands) {
+                println("Writing $command")
                 writer.write(startOfText)
                 writer.flush()
                 Thread.sleep(sleepTime)
