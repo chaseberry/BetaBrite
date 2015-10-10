@@ -42,11 +42,13 @@ fun stringMemConfig(writeString: WriteString, keyboardProtectionStatus: Keyboard
 
 fun textMemConfig(writeText: WriteText, keyboardProtectionStatus: KeyboardProtectionStatus): MemoryConfig {
     val text = writeText.texts
+    val size = 1 + text.sumBy { it.text.length() } + 2 * (text.sumBy { it.mode.name().length() })
+    println("Mem size: $size")
     return MemoryConfig(
             fileIndex = writeText.fileIndex,
             fileType = FileType.Text,
             keyboardProtectionStatus = keyboardProtectionStatus,
-            size = java.lang.String.format("%04x", 1 + text.sumBy { it.text.length() } + 2 * (text.sumBy { it.mode.name().length() })),
+            size = java.lang.String.format("%04x", size),
             qqqq = writeText.startTime + writeText.endTime
     )
 }
