@@ -40,7 +40,7 @@ class Test {
         val buf = StringWriter()
         packet.write(buf)
         buf.toString().forEach {
-            print("${java.lang.String.format("%02x", it)}:")
+            print("${java.lang.String.format("%02x", it.toInt())}:")
         }
     }
 
